@@ -1,0 +1,21 @@
+{% extends 'base.html'%}
+
+{% block content %}
+{% for msg in get_flashed_messages() %}
+    <div>{{ msg }}</div>
+    {% endfor %}
+
+<form method="POST" action="">
+       {{ form.hidden_tag() }}
+    <p>{{ form.name.label }} {{ form.name(size=20) }}</p>
+    <p>{{ form.ynp.label }} {{ form.ynp(size=20) }}</p>
+    <p>{{ form.comment.label }} {{ form.comment(size=200) }}</p>
+    <p>{{ form.bank_name.label }} {{ form.bank_name(size=80) }}</p>
+    <p>{{ form.bank_account.label }} {{ form.bank_account(size=20) }}</p>
+    <p>{{ form.email.label }} {{ form.email(size=20) }}</p>
+    <p> {{ form.country.label }} {{ form.country }}</p>-->
+
+    <input type="submit" value="Go">
+</form>
+{% endblock%}
+

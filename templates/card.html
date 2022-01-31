@@ -1,0 +1,26 @@
+{% extends 'base.html'%}
+
+
+{% block content %}
+    <table border="1">
+        <tr>
+            <th>Название</th>
+            <th>УНП</th>
+            <th>Комментарий</th>
+            <th>E-mail</th>
+            <th>Название банка</th>
+            <th>Счет</th>
+            <th>Создано</th>
+       </tr>
+        {% for card in cards %}
+        <tr><td><a href="{{url_for('company_detail', slug=card.slug)}}">{{ card.name }}</a></td>
+            <td>{{ card.ynp }}</td><td>{{ card.comment }}</td><td>{{ card.email }}</td>
+            <td>{{ card.bank_name}}</td><td>{{ card.bank_account}}</td>
+            <td>{{ card.created}}</td></tr>
+        {% endfor %}
+    </table>
+
+
+{% endblock%}
+
+
