@@ -8,6 +8,9 @@ def slugify(s):
     return re.sub(pattern, '-', s).lower()
 
 class Company(db.Model):
+    """" Company table model with overriding the __init__ magic method to automatically generate and
+     add the slug column to the table """
+
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(50), unique=True, nullable=False)
     ynp = db.Column(db.String(20))
@@ -18,9 +21,7 @@ class Company(db.Model):
     slug = db.Column(db.String(140), unique=True)
     created = db.Column(db.DateTime, default=datetime.utcnow())
     country = db.Column(db.String(50), default='дом')
-    contacts = db.relationship('Contact', backref='cont', lazy=True)
-
-
+    contact = db.relationship('Contact', backref='employee', lazy=True)
 
     def __init__(self, *args, **kwargs):
         super(Company, self).__init__(*args, **kwargs)
@@ -32,13 +33,15 @@ class Company(db.Model):
 
 
 class Contact(db.Model):
+    """" Contact table model with overriding the __init__ magic method to automatically generate and
+         add the slug column to the table """
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(50), unique=True, nullable=False)
     comment = db.Column(db.Text, default='')
     email = db.Column(db.String(50))
     slug = db.Column(db.String(140), unique=True)
     position = db.Column(db.String(100))
-    company_id = db.Column(db.Integer, db.ForeignKey('company.id'))
+    company_id = db.Column(db.Integer, db.ForeignKey('company.id'), nullable=False)
 
 
     def __init__(self, *args, **kwargs):

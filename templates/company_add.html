@@ -7,7 +7,9 @@
 
 <form method="POST" action="">
        {{ form.hidden_tag() }}
-    <p>{{ form.name.label }} {{ form.name(size=20) }}</p>
+    <div class="mb-3">
+        {{ form.name.label (class="form-label") }} {{ form.name(size=20) }}
+    <div>
     <p>{{ form.ynp.label }} {{ form.ynp(size=20) }}</p>
     <p>{{ form.comment.label }} {{ form.comment(size=200) }}</p>
     <p>{{ form.bank_name.label }} {{ form.bank_name(size=80) }}</p>
