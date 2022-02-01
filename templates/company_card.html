@@ -12,17 +12,23 @@
     <p>Страна:   {{ detail.country }}</p>
 
 </div>
-<div class="wrapper">
+<div class="">
     <p class="description">Контактные лица</p>
-{% for contact in contact %}
-    <div class="company_card">
-        <p><h5>Карточка клиента: {{ contact.name }}</h5></p>
-        <p> id-----------{{ contact.company_id }}</p>
-        <p>{{ contact.comment }}</p>
-        <p>{{ contact.email }}</p>
-        <p>{{ contact.position }}</p>
-    </div>
-{% endfor %}
+    <table class="table table-striped table-bordered border-primary">
+        <tr>
+            <th>Имя</th>
+            <th>Комментарий</th>
+            <th>E-mail</th>
+            <th>Телефон</th>
+
+       </tr>
+        {% for contact in contact %}
+
+            <td>{{ contact.name }}</td><td>{{ contact.comment }}</td><td>{{ contact.email }}</td>
+            <td>{{ contact.phone}}</td>
+        {% endfor %}
+    </table>
+
 </div>
 
 {% endblock%}

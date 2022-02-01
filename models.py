@@ -39,6 +39,7 @@ class Contact(db.Model):
     name = db.Column(db.String(50), unique=True, nullable=False)
     comment = db.Column(db.Text, default='')
     email = db.Column(db.String(50))
+    phone = db.Column(db.String(20))
     slug = db.Column(db.String(140), unique=True)
     position = db.Column(db.String(100))
     company_id = db.Column(db.Integer, db.ForeignKey('company.id'), nullable=False)
