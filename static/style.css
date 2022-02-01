@@ -32,3 +32,36 @@
 
     a {text-decoration: none; color: #708090; font-weight: bolder; font-size: 18px;}
 a:hover {text-decoration: none; color: #2F4F4F;}
+
+.content-section{
+    padding: 20px;
+    margin: 10px;
+    border: 1px solid darkblue;
+  height: 700px;
+  width: 500px;
+}
+
+.sub{
+margin: 20px 170px;
+}
+
+.description{
+margin: 5px;
+text-align: center;
+}
+
+.company_card{
+    margin: 20px;
+    padding: 0px 0px 0px 20px;
+    border: 1px solid darkblue;
+    font-size: 12px;
+}
+h5{
+    text-align: center;
+}
+.wrapper{
+    margin: 3px 0px 0px 20px;
+    height: 700px;
+    width: 500px;
+    border: 3px solid darkblue;
+}

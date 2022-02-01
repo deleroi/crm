@@ -1,19 +1,28 @@
 {% extends 'base.html'%}
 
 {% block content %}
-    <p><h2>Карточка компании: {{ detail.name }} </h2></p>
-    <p> id-----------{{ detail.id }}</p>
-    <p>{{ detail.ynp }}</p>
-    <p>{{ detail.comment }}</p>
+<div class="company_card">
 
+    <p><h5>Карточка компании: {{ detail.name }} </h5></p>
+    <p>УНП Компании: {{ detail.ynp }}</p>
+    <p>Коментарии: {{ detail.comment }}</p>
+    <p>Email: {{ detail.email }}</p>
+    <p>Банк счет: {{ detail.bank_account }}</p>
+    <p>Создано: {{ detail.created }}</p>
+    <p>Страна:   {{ detail.country }}</p>
 
-    {% for contact in contact %}
-    <p><h2>Карточка клиента: {{ contact.name }}</h2></p>
-    <p> id-----------{{ contact.company_id }}</p>
-    <p><h2>{{ contact.comment }}</h2></p>
-    <p><h2>{{ contact.email }}</h2></p>
-    <p><h2>{{ contact.position }}</h2></p>
-    {% endfor %}
-
+</div>
+<div class="wrapper">
+    <p class="description">Контактные лица</p>
+{% for contact in contact %}
+    <div class="company_card">
+        <p><h5>Карточка клиента: {{ contact.name }}</h5></p>
+        <p> id-----------{{ contact.company_id }}</p>
+        <p>{{ contact.comment }}</p>
+        <p>{{ contact.email }}</p>
+        <p>{{ contact.position }}</p>
+    </div>
+{% endfor %}
+</div>
 
 {% endblock%}

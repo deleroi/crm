@@ -12,11 +12,8 @@ def card():
 
 @app.route('/<slug>')
 def company_detail(slug):
-    # detail = Company.query.filter(Company.slug == slug).first()
     detail = Company.query.get(slug)
-    # contact = Contact.query.filter(Contact.company_id == detail.id).all()
     contact = Contact.query.filter(Contact.company_id == detail.id).all()
-    # contact = Contact.query.all()
     return render_template('/company_card.html', detail=detail, contact=contact)
 
 @app.route('/add', methods=['GET', 'POST'])
