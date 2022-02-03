@@ -1,19 +1,30 @@
 {% extends 'base.html'%}
 
 {% block content %}
-<div class="company_card">
-
-    <p><h5>Карточка компании: {{ detail.name }} </h5></p>
-    <p>УНП Компании: {{ detail.ynp }}</p>
-    <p>Коментарии: {{ detail.comment }}</p>
-    <p>Email: {{ detail.email }}</p>
-    <p>Банк счет: {{ detail.bank_account }}</p>
-    <p>Создано: {{ detail.created }}</p>
-    <p>Страна:   {{ detail.country }}</p>
-
+<div class="wrapper border">
+    <div class="main">
+        <p><h3>Карточка компании: {{ detail.name }} </h3></p>
+        <p>Основной телефон: {{detail.main_phone}}</p>
+        <p>Дополнительный телефон: {{detail.second_phone}}</p>
+        <p>Основной email: {{detail.email}}</p>
+        <p>Дополнительный email: {{detail.second_email}}</p>
+        <p>УНП: {{detail.ynp}}</p>
+        <p>Адрес: {{detail.adress}}</p>
+    </div>
+    <div class="main">
+        <p>Рейтинг: {{detail.rating}}</p>
+        <p>Web адрес: {{detail.web}}</p>
+        <p>Адрес: {{detail.industry}}</p>
+        <p>Название банка: {{detail.bank_name}}</p>
+        <p>Номер счета: {{detail.bank_account}}</p>
+        <p>Страна: {{detail.country}}</p>
+        <p>Коментарии: {{ detail.comment }}</p>
+    </div>
 </div>
-<div class="">
-    <p class="description">Контактные лица</p>
+
+
+<div class="contact_company">
+    <p class="description"><h4>Контактные лица</h4></p>
     <table class="table table-striped table-bordered border-primary">
         <tr>
             <th>Имя</th>

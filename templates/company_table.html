@@ -2,22 +2,21 @@
 
 
 {% block content %}
-    <table class="table table-striped table-bordered border-primary">
+{% for msg in get_flashed_messages() %}
+    <div>{{ msg }}</div>
+    {% endfor %}
+<!--    <table class="border">-->
+<table >
         <tr>
             <th>Название</th>
-            <th>УНП</th>
             <th>Комментарий</th>
             <th>E-mail</th>
-            <th>Название банка</th>
-            <th>Счет</th>
-            <th>Создано</th>
+            <th>Телефон</th>
        </tr>
         {% for card in cards %}
 <!--        <tr><td><a href="{{url_for('company_detail', slug=card.slug)}}">{{ card.name }}</a></td>-->
             <tr><td><a href="{{url_for('company_detail', slug=card.id)}}">{{ card.name }}</a></td>
-            <td>{{ card.ynp }}</td><td>{{ card.comment }}</td><td>{{ card.email }}</td>
-            <td>{{ card.bank_name}}</td><td>{{ card.bank_account}}</td>
-            <td>{{ card.created}}</td></tr>
+            <td>{{ card.comment }}</td><td>{{ card.email }}</td><td>{{ card.main_phone}}</td>
         {% endfor %}
     </table>
 

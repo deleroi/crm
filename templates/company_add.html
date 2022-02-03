@@ -1,64 +1,87 @@
 {% extends 'base.html'%}
 
 {% block content %}
-{% for msg in get_flashed_messages() %}
-    <div>{{ msg }}</div>
-    {% endfor %}
+<h3> Создание Контрагента</h3>
+<!--{% for msg in get_flashed_messages() %}-->
+<!--    <div>{{ msg }}</div>-->
+<!--    {% endfor %}-->
 
-<div class="content-section">
-    <form method="POST" action="">
-        {{ form.hidden_tag() }}
-        <fieldset class="form-group">
-        <legend class="border-bottom mb-4 description">Форма добавления компании</legend>
-            <div class="form-group">
-                {{ form.name.label(class="form-control-label") }} {{ form.name(class="form-control form-control-lg" )}}
-            </div>
-            <div class="form-group">
-                {{ form.ynp.label(class="form-control-label") }} {{ form.ynp(class="form-control form-control-lg" )}}
-            </div>
-            <div class="form-group">
-                {{ form.comment.label(class="form-control-label") }} {{ form.comment(class="form-control form-control-lg" )}}
-            </div>
-            <div class="form-group">
-                {{ form.bank_name.label(class="form-control-label") }} {{ form.bank_name(class="form-control form-control-lg" )}}
-            </div>
-            <div class="form-group">
-                {{ form.bank_account.label(class="form-control-label") }} {{ form.bank_account(class="form-control form-control-lg" )}}
-            </div>
-            <div class="form-group">
-                {{ form.email.label(class="form-control-label") }} {{ form.email(class="form-control form-control-lg" )}}
-            </div>
-            <div class="form-group">
-                {{ form.country.label(class="form-control-label") }} {{ form.country(class="form-control form-control-lg" )}}
-            </div>
 
-        <fieldset>
-            <div class="form-group sub">
-                {{ form.submit(class="btn btn-outline-info")}}
 
-            </div>
 
+<form method="POST" action="{{url_for('add_company')}}">
+    {{ form.hidden_tag() }}
+    <div class="wrapper">
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        {% for category, message in messages %}
+            {{ message }}
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+
+<!--right side-->
+             <div class="main">
+               <div class="field">
+                  {{ form.name.label() }}{{ form.name() }}
+
+<!--                    {% if form.name.errors %}-->
+<!--                        {% for error in form.name.errors%}-->
+<!--                        <span>{{error}}</span>-->
+<!--                        {% endfor %}-->
+<!--                    {% else %}-->
+<!--                    {{ form.name }}-->
+<!--                   {% endif%}-->
+               </div>
+               <div class="field">
+                  {{ form.main_phone.label() }} {{ form.main_phone() }}
+               </div>
+               <div class="field">
+                  {{ form.second_phone.label() }} {{ form.second_phone() }}
+               </div>
+               <div class="field">
+                  {{ form.email.label() }} {{ form.email() }}
+               </div>
+               <div class="field">
+                  {{form.second_email.label() }} {{ form.second_email() }}
+               </div>
+               <div class="field">
+                  {{form.ynp.label() }} {{ form.ynp() }}
+               </div>
+                <div class="field">
+                  {{form.company_adr.label() }} {{ form.company_adr() }}
+                </div>
+             </div>
+
+<!-- left side-->
+             <div class="main">
+               <div class="field">
+                  {{ form.web.label() }}{{ form.web() }}
+               </div>
+               <div class="field">
+                  {{ form.industry.label() }}{{ form.industry() }}
+               </div>
+               <div class="field">
+                  {{ form.bank_name.label() }}{{ form.bank_name() }}
+               </div>
+               <div class="field">
+                  {{ form.bank_account.label() }}{{ form.bank_account() }}
+               </div>
+               <div class="field">
+                  {{ form.country.label() }}{{ form.country() }}
+               </div>
+               <div class="field">
+                  {{ form.rating.label() }}{{ form.rating() }}
+               </div>
+               <div class="field">
+                  {{ form.comment.label() }}{{ form.comment() }}
+               </div>
+
+             </div>
+
+        </div>
+    {{ form.submit() }}
     </form>
-</div>
-
-
-
-
-
-
-<!--<form method="POST" action="">-->
-<!--       {{ form.hidden_tag() }}-->
-
-<!--    {{ form.name.label (class="form-label") }} {{ form.name(size=20) }}-->
-
-<!--    <p>{{ form.ynp.label }} {{ form.ynp(size=20) }}</p>-->
-<!--    <p>{{ form.comment.label }} {{ form.comment(size=200) }}</p>-->
-<!--    <p>{{ form.bank_name.label }} {{ form.bank_name(size=80) }}</p>-->
-<!--    <p>{{ form.bank_account.label }} {{ form.bank_account(size=20) }}</p>-->
-<!--    <p>{{ form.email.label }} {{ form.email(size=20) }}</p>-->
-<!--    <p> {{ form.country.label }} {{ form.country }}</p>&ndash;&gt;-->
-
-<!--    <input type="submit" value="Go">-->
-<!--</form>-->
 {% endblock%}
 

@@ -13,14 +13,22 @@ class Company(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(50), unique=True, nullable=False)
+    main_phone = db.Column(db.String(20))
+    second_phone = db.Column(db.String(20))
+    email = db.Column(db.String(140))
+    second_email = db.Column(db.String(140))
     ynp = db.Column(db.String(20))
-    comment = db.Column(db.Text, default='')
+    rating = db.Column(db.Integer(), default=1)
+    web = db.Column(db.String(40))
+    industry = db.Column(db.String(40))
+    comment = db.Column(db.Text)
     bank_name = db.Column(db.String(50))
     bank_account = db.Column(db.String(50))
-    email = db.Column(db.String(140))
+    # responsible = contact = db.relationship('Contact', backref='employee', lazy=True) связь с таблицей сотрудников
     slug = db.Column(db.String(140), unique=True)
     created = db.Column(db.DateTime, default=datetime.utcnow())
     country = db.Column(db.String(50), default='дом')
+    adress = db.Column(db.Text, default='')
     contact = db.relationship('Contact', backref='employee', lazy=True)
 
     def __init__(self, *args, **kwargs):

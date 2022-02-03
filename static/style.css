@@ -1,67 +1,129 @@
-    ul {
-      list-style: none; /*убираем маркеры списка*/
-      margin: 0; /*убираем отступы*/
-      padding-left: 0; /*убираем отступы*/
-      margin-top: 8px; /*делаем отступ сверху*/
-      background:#E0FFFF; /*добавляем фон всему меню (заменив этот параметр, вы поменяете цвет всего меню)*/
-      height: 50px; /*задаем высоту*/
-    }
-    .menu {
-      text-decoration: none; /*убираем подчеркивание текста ссылок*/
-      background:#E0FFFF; /*добавляем фон к пункту меню (заменив этот параметр, вы поменяете цвет всех пунктов меню)*/
-      color:#000000; /*меняем цвет ссылок*/
-      padding:0px 15px; /*добавляем отступ*/
-      font-family: arial; /*меняем шрифт*/
-      line-height:50px; /*ровняем меню по вертикали*/
-      display: block;
-      border-right: 1px solid #000080; /*добавляем бордюр справа*/
-      -moz-transition: all 0.3s 0.01s ease; /*делаем плавный переход*/
-      -o-transition: all 0.3s 0.01s ease;
-      -webkit-transition: all 0.3s 0.01s ease;
-    }
-    .menu:hover {
-      background:#B0C4DE;/*добавляем эффект при наведении*/
-    }
-    li {
-      float:left; /*Размещаем список горизонтально для реализации меню*/
-    }
-
-    table{
-        margin: 20px 0px 0px 0px;
-    }
-
-    a {text-decoration: none; color: #708090; font-weight: bolder; font-size: 18px;}
-a:hover {text-decoration: none; color: #2F4F4F;}
-
-.content-section{
-    padding: 20px;
-    margin: 10px;
-    border: 1px solid darkblue;
-  height: 700px;
-  width: 500px;
+body{
+ font-family: Arial, Helvetica, sans-serif;
 }
 
-.sub{
-margin: 20px 170px;
+.wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  /* border: 2px solid black; */
+  grid-column-gap: 200px;
+  padding: 0px 40px 0px 40px;
+
+
 }
 
-.description{
-margin: 5px;
-text-align: center;
+.field {
+    clear:both;
+    text-align:right;
+    line-height:40px;
+           }
+
+label {
+float:left;
+padding-right:10px;
 }
 
-.company_card{
-    margin: 20px;
-    padding: 0px 0px 0px 20px;
-    border: 1px solid darkblue;
-    font-size: 12px;
-}
-h5{
+.main {float:left}
+
+table {
+    width: 100%; /* Ширина таблицы */
+    border-bottom: 2px solid #bfbaba; /* Линия внизу таблицы */
+    /*  background: #fffacd; /* Цвет фона таблицы */
+   }
+   th {
+    background: #a8a6a6; /* Цвет фона заголовка */
+    color: white; /* Цвет текста */
     text-align: center;
+   }
+
+  td, th {
+    padding: 8px; /* Поля вокруг текста */
+    border-bottom: 2px solid #bfbaba;
+    text-align: center;
+   }
+
+   a {
+    text-decoration: none; /* Убираем подчёркивание */
+    color: #696969;
+   }
+
+ a:hover {
+
+    color: #3a3535;
+   }
+
+
+
+
+/* temp */
+
+/* Отступ контакты в карточке компании */
+.contact_company{
+margin: 40px;
 }
-.wrapper{
-    margin: 3px 0px 0px 20px;
-    height: 700px;
-    width: 500px;
-    border: 3px solid darkblue;
+
+
+.border{
+border: 1px solid #D2D1D1;
+box-shadow: inset 2px 2px 5px rgba(154, 147, 140, 0.5), 1px 1px 5px rgba(255, 255, 255, 1);
 }
+
+/* menu */
+@import url('https://fonts.googleapis.com/css?family=Ubuntu+Condensed');
+.menu-main {
+  list-style: none;
+  margin: 10px 0 5px;
+  padding: 25px 0 5px;
+  text-align: center;
+  background: white;
+}
+.menu-main li {display: inline-block;}
+.menu-main li:after {
+  content: "|";
+  color: #606060;
+  display: inline-block;
+  vertical-align:top;
+}
+.menu-main li:last-child:after {content: none;}
+.menu-main a {
+  text-decoration: none;
+  font-family: 'Ubuntu Condensed', sans-serif;
+  letter-spacing: 2px;
+  position: relative;
+  padding-bottom: 20px;
+  margin: 0 34px 0 30px;
+  font-size: 17px;
+  text-transform: uppercase;
+  display: inline-block;
+  transition: color .2s;
+}
+.menu-main a, .menu-main a:visited {color: #9d999d;}
+.menu-main a.current, .menu-main a:hover{color: #3b3b3b;}
+.menu-main a:before,
+.menu-main a:after {
+  content: "";
+  position: absolute;
+  height: 4px;
+  top: auto;
+  right: 50%;
+  bottom: -5px;
+  left: 50%;
+  background: #3b3b3b;
+  transition: .8s;
+}
+.menu-main a:hover:before, .menu-main .current:before {left: 0;}
+.menu-main a:hover:after, .menu-main .current:after {right: 0;}
+@media (max-width: 550px) {
+.menu-main {padding-top: 0;}
+.menu-main li {display: block;}
+.menu-main li:after {content: none;}
+.menu-main a {
+  padding: 25px 0 20px;
+  margin: 0 30px;
+}
+}
+
+
+
+
+
