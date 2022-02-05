@@ -1,8 +1,20 @@
 from app import app, db
-from flask import render_template, flash, redirect, url_for, request
+from flask import render_template, flash, redirect, url_for, request, session, g
 from models import Company, Contact
-from forms import CompanyForm
+from forms import CompanyForm, ContactForm
 
+
+
+events = [
+    {
+      'todo': 'first todo',
+      'date': '2022-02-05'
+    },
+{
+      'todo': 'second todo',
+      'date': '2022-02-06'
+    },
+]
 
 @app.route('/')
 def card():
@@ -14,8 +26,13 @@ def card():
 @app.route('/<slug>')
 def company_detail(slug):
     detail = Company.query.get(slug)
+    session['card_id'] = detail.id
     contact = Contact.query.filter(Contact.company_id == detail.id).all()
     return render_template('/company_card.html', detail=detail, contact=contact)
+
+
+
+
 
 @app.route('/add', methods=['GET', 'POST'])
 def add_company():
@@ -49,3 +66,30 @@ def add_company():
 
     return render_template('company_add.html', form=form)
 
+
+@app.route('/add_contact', methods=['GET', 'POST'])
+def add_contact():
+    form = ContactForm()
+    if request.method == 'POST' and form.validate_on_submit():
+        name = form.name.data
+        phone = form.phone.data
+        email = form.email.data
+        position = form.position.data
+        comment = form.comment.data
+        company_id = session.get('card_id')
+
+    # #     add data to DATABASE
+        contact = Contact(name=name, phone=phone, email=email, position=position, comment=comment,
+                          company_id=company_id)
+        db.session.add(contact)
+        db.session.commit()
+        flash('контакт создан', "success")
+        return redirect(url_for('company_detail', slug=company_id))
+
+    return render_template('contact_add.html', form=form)
+
+
+@app.route('/calendar')
+def calendar():
+
+    return render_template('calendar.html', events=events)

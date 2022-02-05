@@ -1,7 +1,7 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, IntegerField, SubmitField, SelectField, TextAreaField
 from wtforms.validators import DataRequired, Email, Length
-from models import Countrys
+from models import Countrys, Company
 
 
 class CompanyForm(FlaskForm):
@@ -19,4 +19,12 @@ class CompanyForm(FlaskForm):
     bank_account = StringField('Номер счета')
     country = SelectField('Страна', choices=Countrys.query.all())
     company_adr = TextAreaField('Адрес')
+    submit = SubmitField('Добавить')
+
+class ContactForm(FlaskForm):
+    name = StringField('Имя контакта', validators=[DataRequired()])
+    email = StringField('Email', validators=[Email()])
+    phone = StringField('Номер телефона')
+    position = StringField('Должность')
+    comment = StringField('Коментарий')
     submit = SubmitField('Добавить')

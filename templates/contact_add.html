@@ -1,0 +1,53 @@
+{% extends 'base.html'%}
+
+{% block content %}
+<h3> Создание Контакта</h3>
+<!--{% for msg in get_flashed_messages() %}-->
+<!--    <div>{{ msg }}</div>-->
+<!--    {% endfor %}-->
+
+
+
+
+<form method="POST" action="{{url_for('add_contact')}}">
+    {{ form.hidden_tag() }}
+    <div class="wrapper">
+
+<!--        {% with messages = get_flashed_messages(with_categories=true) %}-->
+<!--    {% if messages %}-->
+<!--        {% for category, message in messages %}-->
+<!--            {{ message }}-->
+<!--        {% endfor %}-->
+<!--    {% endif %}-->
+<!--{% endwith %}-->
+
+<!--right side-->
+             <div class="main">
+               <div class="field">
+                  {{ form.name.label() }}{{ form.name() }}
+               </div>
+               <div class="field">
+                  {{ form.phone.label() }} {{ form.phone() }}
+               </div>
+               <div class="field">
+                  {{ form.email.label() }} {{ form.email() }}
+               </div>
+               <div class="field">
+                  {{form.position.label() }} {{ form.position() }}
+               </div>
+               <div class="field">
+                  {{form.comment.label() }} {{ form.comment() }}
+               </div>
+             </div>
+
+<!-- left side-->
+             <div class="main">
+
+               {{ form.submit() }}
+
+             </div>
+
+        </div>
+
+    </form>
+{% endblock%}
