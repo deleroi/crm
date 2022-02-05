@@ -13,4 +13,8 @@
 import models
 from app import db
 db.create_all()
+
+###### start app ######
+
+python main.py
 ``````
